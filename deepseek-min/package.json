@@ -1,0 +1,10 @@
+{
+  "name": "deepseek-min",
+  "version": "0.1.0",
+  "private": true,
+  "description": "最小可运行的 DeepSeek 对话 CLI",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  }
+}

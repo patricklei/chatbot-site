@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>简易聊天室</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar__profile">
+          <div class="avatar avatar--self" id="profile-avatar" role="button" tabindex="0" aria-label="点击更换头像">
+            <span class="avatar__text" id="avatar-text">我</span>
+            <img id="avatar-image" class="avatar__image" style="display: none;" alt="头像" />
+            <input type="file" id="avatar-input" accept="image/*" style="display: none;" />
+            <div class="avatar__edit-icon">📷</div>
+          </div>
+          <div class="profile__info">
+            <h2>我的昵称</h2>
+            <input
+              id="username-input"
+              type="text"
+              maxlength="30"
+              placeholder="输入昵称"
+              aria-label="输入昵称"
+            />
+          </div>
+        </div>
+
+        <div class="sidebar__search">
+          <input
+            type="search"
+            placeholder="搜索"
+            aria-label="搜索聊天或联系人"
+            disabled
+          />
+        </div>
+
+        <nav class="sidebar__conversations" aria-label="会话列表">
+          <div id="visitor-list" class="conversation-list" data-empty>
+            <p class="conversation-list__empty">正在获取在线访客…</p>
+          </div>
+        </nav>
+      </aside>
+
+      <main class="chat-panel">
+        <header class="chat-panel__header">
+          <div>
+            <h1>小助手Bot</h1>
+            <p>在线 · 自动回复机器人</p>
+          </div>
+          <button class="header__action" type="button" disabled>
+            <span>…</span>
+          </button>
+        </header>
+
+        <section class="chat-panel__content" aria-live="polite">
+          <ul id="messages" class="message-list"></ul>
+        </section>
+
+        <form id="chat-form" class="composer" autocomplete="off">
+          <div class="emoji-panel" id="emoji-panel">
+            <div class="emoji-panel__grid" id="emoji-grid"></div>
+          </div>
+          <textarea
+            id="message-input"
+            name="message"
+            placeholder="发送消息…"
+            maxlength="500"
+            rows="3"
+          ></textarea>
+          <div class="composer__actions">
+            <button type="button" class="composer__btn" id="emoji-btn">😊</button>
+            <button type="button" class="composer__btn" id="file-btn">文件</button>
+            <input type="file" id="file-input" style="display:none" />
+            <button type="button" class="composer__btn" id="loc-btn">📍位置</button>
+            <div class="composer__submit">
+              <span class="tip">按 Enter 发送，Shift+Enter 换行</span>
+              <button type="submit" class="send-btn">发送</button>
+            </div>
+          </div>
+        </form>
+      </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
